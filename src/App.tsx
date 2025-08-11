@@ -10,7 +10,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('upload');
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-
+  
   useEffect(() => {
     // Check if user is returning user
     const isFirstTime = !localStorage.getItem('safedrive_visited');
@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     // Automatically check session on load
-    fetch('http://localhost:5000/auth/user', {
+    fetch(`${process.env.API_BASE}/auth/user`, {
       credentials: 'include',
     })
       .then(res => res.json())
