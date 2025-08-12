@@ -10,7 +10,8 @@ import { Badge } from './ui/badge';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger
 } from './ui/dropdown-menu';
-const API_BASE =  process.env.API_BASE;
+
+const API_BASE = import.meta.env.VITE_API_BASE 
 
 type ViewMode = 'grid' | 'list';
 

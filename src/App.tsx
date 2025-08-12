@@ -3,6 +3,9 @@ import { LoginPage } from './components/LoginPage';
 import { Dashboard } from './components/Dashboard';
 import { UploadPage } from './components/UploadPage';
 import { OnboardingModal } from './components/OnboardingModal';
+import { FlaggedFiles } from './components/FlaggedFiles';
+import { SafeUploads } from './components/SafeUploads';
+
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -10,7 +13,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('upload');
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  
+
   useEffect(() => {
     // Check if user is returning user
     const isFirstTime = !localStorage.getItem('safedrive_visited');
@@ -22,7 +25,7 @@ export default function App() {
 
   useEffect(() => {
     // Automatically check session on load
-    fetch(`${process.env.API_BASE}/auth/user`, {
+    fetch(   `${import.meta.env.VITE_API_BASE}/auth/user`, {
       credentials: 'include',
     })
       .then(res => res.json())
@@ -44,7 +47,7 @@ export default function App() {
 
 const handleLogout = async () => {
   try {
-    await fetch("http://localhost:5000/auth/logout", {
+    await fetch(   `${import.meta.env.VITE_API_BASE}/auth/logout`, {
       credentials: "include"
     });
   } catch (e) {
@@ -76,6 +79,7 @@ const handleLogout = async () => {
           onLogout={handleLogout}
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
+          currentPage={currentPage}
         />
       )}
       
@@ -86,8 +90,30 @@ const handleLogout = async () => {
           onLogout={handleLogout}
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
+          currentPage={currentPage}
         />
       )}
+    {currentPage === 'flagged' && (
+  <FlaggedFiles
+    user={currentUser}
+    onNavigate={setCurrentPage}
+    onLogout={handleLogout}
+    darkMode={darkMode}
+    toggleDarkMode={toggleDarkMode}
+    currentPage={currentPage}
+  />
+)}
+
+{currentPage === 'safe-uploads' && (
+  <SafeUploads
+    user={currentUser}
+    onNavigate={setCurrentPage}
+    onLogout={handleLogout}
+    darkMode={darkMode}
+    toggleDarkMode={toggleDarkMode}
+    currentPage={currentPage}
+  />
+)}
 
       {showOnboarding && (
         <OnboardingModal onClose={() => setShowOnboarding(false)} darkMode={darkMode} />

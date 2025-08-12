@@ -13,7 +13,7 @@ export function LoginPage({ onLogin, darkMode, toggleDarkMode }: LoginPageProps)
   useEffect(() => {
     const checkAuth = async () => {
       try {
-       const response = await fetch(`${process.env.API_BASE}/auth/user`, {
+       const response = await fetch(`${import.meta.env.VITE_API_BASE}/auth/user`, {
  
 
           credentials: 'include',
@@ -31,7 +31,7 @@ export function LoginPage({ onLogin, darkMode, toggleDarkMode }: LoginPageProps)
   }, [onLogin]);
 
   const handleGoogleSignIn = () => {
-    window.location.href = 'http://localhost:5000/auth/login';
+    window.location.href = `${import.meta.env.VITE_API_BASE}/auth/login`;
   };
 
   return (
