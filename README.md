@@ -228,6 +228,13 @@ npm run preview – Preview production build
 Backend
 python app.py 
 
+## 🐳 Pull Backend Image from Docker Hub
+
+The backend image is available on Docker Hub and can be pulled directly without building locally:
+
+```bash
+docker pull zinebadammiche/safedriveaibackend:latest
+
 🔒 Security Features
 OAuth-based authentication (Google)
 
