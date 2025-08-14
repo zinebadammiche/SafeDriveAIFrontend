@@ -1,5 +1,5 @@
 # SafeDrive AI – Intelligent & Secure Cloud Gateway
-  
+
 An advanced research and engineering project delivering a modern full-stack application for AI-driven file scanning and secure cloud storage integration. Designed with a strong focus on privacy protection, the system leverages React 18 + TypeScript for a high-performance, user-centric frontend and Flask (Python) for a robust, scalable backend. Styled with Tailwind CSS and seamlessly integrated with Google Drive, the solution combines cutting-edge AI, cryptography, and cloud deployment practices, culminating in a production-ready environment deployed via Docker on AWS EC2.
 
 ---
@@ -74,8 +74,8 @@ If you would like to try SafeDrive AI during this phase:
   - **EasyOCR** for text extraction from images  
   - **Presidio + spaCy** for NLP-based sensitive data detection
 - **Encryption**:  
-  - **AES + RSA hybrid** for documents  
-  - **CKKS homomorphic encryption (TenSEAL)** for images
+  - **AES**   for images
+  - **CKKS homomorphic encryption (TenSEAL)** for documents 
 - **Cloud Integration**: Google Drive API
 - **File Handling**: Secure temporary storage, automatic cleanup
 - **Async/Cache (optional)**: Redis (for task state, rate limiting, or caching)
